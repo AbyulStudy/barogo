@@ -13,6 +13,16 @@ const changeCoin = {
     100: { amount: 1 },
   },
 };
+const inputCoin = {
+  coin: {
+    10000: { amount: 0 },
+    5000: { amount: 0 },
+    1000: { amount: 0 },
+    500: { amount: 0 },
+    100: { amount: 0 },
+  },
+};
+
 // 결제 방식
 const checkCard = {
   type: 'checkCard',
@@ -34,15 +44,18 @@ const cash = {
     100: { amount: 2 },
   },
 };
-const inputCoin = {
-  coin: {
-    10000: { amount: 0 },
-    5000: { amount: 0 },
-    1000: { amount: 0 },
-    500: { amount: 0 },
-    100: { amount: 0 },
-  },
-};
+
+/* console 함수 */
+const drinkMenu = (i) => {
+  if (i) console.log(`===================[ ${i} ]===================`);
+  for (let i = 1; i <= Object.keys(drink).length; i++) {
+    console.log(
+      `[${drink[i].availability ? '구매가능' : '구매불가'}] ${i} - ${
+        drink[i].name
+      } 가격 : ${drink[i].price}, 재고 : ${drink[i].amount}`
+    );
+  }
+}; // end [ drinkMenu ]
 
 /* 공통 함수 */
 const amountCheck = () => {
@@ -88,15 +101,6 @@ const cashInquiry = () => {
 }; // end [ cashInquiry ]
 
 /* 현금결제 예외처리 로직 */
-const amounComparison = (money) => {
-  for (type in drink) {
-    if (drink[type].availability) {
-      if (drink[type].price > money) {
-        drink[type].availability = false;
-      }
-    }
-  }
-}; // end [ amounComparison ]
 const whetherChange = (money) => {
   const chCoin = changeCoin.coin;
   let won = Object.keys(chCoin);
@@ -164,8 +168,7 @@ const cashLogic = (cash) => {
     console.log('투입 금액 : ', money);
     amountCheck();
     comparisonPrice(money);
-    amounComparison(money);
-    whetherChange2(money);
+    whetherChange(money);
     drinkMenu(i);
     if (choiceDrink(i)) {
       const change = money - drink[i].price;
@@ -209,18 +212,6 @@ const creditCardLogic = (creditCard) => {
     }
   }
 }; // end [ creditCardLogic ]
-
-/* console 함수 */
-const drinkMenu = (i) => {
-  if (i) console.log(`===================[ ${i} ]===================`);
-  for (let i = 1; i <= Object.keys(drink).length; i++) {
-    console.log(
-      `[${drink[i].availability ? '구매가능' : '구매불가'}] ${i} - ${
-        drink[i].name
-      } 가격 : ${drink[i].price}, 재고 : ${drink[i].amount}`
-    );
-  }
-}; // end [ drinkMenu ]
 
 const vendingMachine = (paymentMethod) => {
   switch (paymentMethod.type) {
