@@ -44,20 +44,6 @@ const inputCoin = {
   },
 };
 
-const vendingMachine = (paymentMethod) => {
-  switch (paymentMethod.type) {
-    case 'cash':
-      cashLogic(paymentMethod);
-      break;
-    case 'checkCard':
-      checkCardLogic(paymentMethod);
-      break;
-    case 'creditCard':
-      creditCardLogic(paymentMethod);
-      break;
-  }
-};
-
 /* 공통 함수 */
 const amountCheck = () => {
   for (type in drink) {
@@ -102,7 +88,7 @@ const cashInquiry = () => {
 }; // end [ cashInquiry ]
 
 /* 현금결제 예외처리 로직 */
-const whetherChange1 = (money) => {
+const amounComparison = (money) => {
   for (type in drink) {
     if (drink[type].availability) {
       if (drink[type].price > money) {
@@ -110,8 +96,8 @@ const whetherChange1 = (money) => {
       }
     }
   }
-}; // end [ whetherChange1 ]
-const whetherChange2 = (money) => {
+}; // end [ amounComparison ]
+const whetherChange = (money) => {
   const chCoin = changeCoin.coin;
   let won = Object.keys(chCoin);
   won.sort((a, b) => {
@@ -170,7 +156,7 @@ const limitInquiry = (creditCard, price) => {
   else return false;
 }; // end [ limitInquiry ]
 
-/* 결제 함수 */
+/* 결제 */
 const cashLogic = (cash) => {
   console.log(`================[ 현금결제 ]================`);
   for (let i = 1; i <= 3; i++) {
@@ -178,7 +164,7 @@ const cashLogic = (cash) => {
     console.log('투입 금액 : ', money);
     amountCheck();
     comparisonPrice(money);
-    whetherChange1(money);
+    amounComparison(money);
     whetherChange2(money);
     drinkMenu(i);
     if (choiceDrink(i)) {
@@ -235,6 +221,20 @@ const drinkMenu = (i) => {
     );
   }
 }; // end [ drinkMenu ]
+
+const vendingMachine = (paymentMethod) => {
+  switch (paymentMethod.type) {
+    case 'cash':
+      cashLogic(paymentMethod);
+      break;
+    case 'checkCard':
+      checkCardLogic(paymentMethod);
+      break;
+    case 'creditCard':
+      creditCardLogic(paymentMethod);
+      break;
+  }
+};
 
 const output1 = vendingMachine(cash);
 const output2 = vendingMachine(checkCard);
