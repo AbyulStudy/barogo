@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-03-10T17:15:00.806Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="U9rUBa0oc4FaUyr5o5wo" version="17.0.0" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-10T17:25:30.662Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36" etag="5GC5y7viYaWiqNAvIgkP" version="17.0.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="3253" dy="1253" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -289,7 +289,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2oKnmPSqaUGV2AU_C0cW-0" value="changeCoin&lt;br&gt;&amp;gt; &lt;br&gt;changeCount" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="2oKnmPSqaUGV2AU_C0cW-0" value="coinCount&lt;br&gt;&amp;gt; &lt;br&gt;changeCount" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="140" y="480" width="100" height="80" as="geometry" />
         </mxCell>
       </root>
